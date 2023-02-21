@@ -1,0 +1,65 @@
+;; @FAIL-V8: does not recognise (ref null (rtt _))
+
+;; Nullary constructors
+
+data T = A | B
+
+val a = A
+val b = B
+
+val A = a
+val B = b
+
+
+;; Constructor arguments
+
+data U = X | Y Int | Z Float Int
+
+val ux = X
+val uy = Y 1
+val uz = Z 2.1 12
+
+val X = ux
+val Y y1 = uy
+val Z z1 z2 = uz
+
+assert y1 == 1
+assert z1 == 2.1
+assert z2 == 12
+
+
+;; Partial application
+
+val y = Y
+val z = Z
+val zpi = Z 3.14
+val ze = z 2.71
+
+val Y y1' = y 5
+val Z z11 z12 = z 0.9 1
+val Z z21 z22 = zpi 2
+val Z z31 z32 = ze 3
+
+assert y1' == 5
+assert z11 == 0.9
+assert z12 == 1
+assert z21 == 3.14
+assert z22 == 2
+assert z31 == 2.71
+assert z32 == 3
+
+
+;; Recursion
+
+rec data R = R1 | R2 Int R | R3 R R Int R
+
+type R' = R
+
+
+;; Mutual recursion
+
+(; TODO
+rec data A = A1 | A2 B | A3 C B A
+and data B = B1 Int | B2 A A | B3 B C
+and data C = C1 | C2 | C3 A B C | C4 A B C
+;)
