@@ -1,6 +1,6 @@
 # WamlFX -- WasmFX ML
 
-An experimental functional language and implementation for exploring and evaluating the Wasm [typed continuations](https://github.com/WebAssembly/stack-switching/proposals/continuations/).
+An experimental functional language and implementation for exploring and evaluating the WasmFX extension.
 
 
 ## Overview
